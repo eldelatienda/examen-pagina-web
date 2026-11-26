@@ -298,7 +298,7 @@
         <div
           class="menu-item locuras bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 border border-amber-100 flex flex-col justify-between group">
           <div class="relative overflow-hidden h-80 bg-amber-100">
-            <img src="imagen9.jpg" alt="Vaso Especial"
+            <img src="imagen2.jpg" alt="Vaso Especial"
               class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
             <span
               class="absolute top-4 left-4 bg-chamoy-600 text-white text-[10px] font-display font-black uppercase tracking-wider px-3 py-1 rounded-full shadow">
@@ -326,7 +326,7 @@
         <div
           class="menu-item botanas bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 border border-amber-100 flex flex-col justify-between group">
           <div class="relative overflow-hidden h-80 bg-amber-100">
-            <img src="imagen2.jpg" alt="Combo Mixto"
+            <img src="imagen3.jpg" alt="Combo Mixto"
               class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
             <span
               class="absolute top-4 left-4 bg-emerald-600 text-white text-[10px] font-display font-black uppercase tracking-wider px-3 py-1 rounded-full shadow">
@@ -732,3 +732,450 @@
       <p>© 2026 Picadely Chamoy & Snacks. Todos los derechos reservados.</p>
     </div>
   </footer>
+
+   <div id="cart-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm justify-end">
+    <div class="bg-white w-full max-w-md h-full p-6 flex flex-col justify-between shadow-2xl">
+      <div>
+        <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+          <div class="flex items-center space-x-2">
+            <span class="text-xl">🌶️</span>
+            <h3 class="font-display font-bold text-xl text-chamoy-950">Tu Pedido Picosito</h3>
+          </div>
+          <button onclick="toggleCartModal()" class="text-gray-400 hover:text-chamoy-800 text-xl">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div id="cart-items" class="py-6 space-y-4 max-h-[60vh] overflow-y-auto custom-scrollbar">
+          <p class="text-gray-400 text-xs text-center py-8">Tu carrito está vacío <br>¡Agrega tu fruta o vaso preferido!
+          </p>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-100 pt-4 space-y-4">
+        <div class="flex justify-between font-display font-black text-xl text-chamoy-950">
+          <span>Total estimado:</span>
+          <span id="cart-total">0 Bs</span>
+        </div>
+        <p class="text-[10px] text-gray-400 text-center">Al presionar el botón se generará el mensaje listo para enviar
+          a nuestro WhatsApp.</p>
+        <button onclick="checkoutWhatsApp()"
+          class="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white font-display font-black py-4 rounded-2xl text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-lg transition">
+          <i class="fab fa-whatsapp text-lg"></i>
+          <span>Enviar Pedido por WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+    let customBowl = {
+      fruit: 'Mango con Piña',
+      fruitPrice: 10,
+      sauce: 'Chamoy Dulce',
+      toppings: [],
+      quantity: 1
+    };
+
+    let reviewsData = [
+      {
+        id: 1,
+        name: "Camila Fernandez",
+        date: "Hace 2 días",
+        rating: 5,
+        title: "¡El mejor chamoy de Cochabamba!",
+        comment: "La fruta venía súper fresca y heladita. El chamoy tiene el punto exacto entre ácido y dulce. Sin duda se volvió mi antojo favorito de las tardes.",
+        likes: 12,
+        verified: true,
+        recommend: true
+      },
+      {
+        id: 2,
+        name: "Mateo Siles",
+        date: "Hace 5 días",
+        rating: 5,
+        title: "Súper recomendado el Combo Mixto",
+        comment: "Pedí el Combo Mixto de 20Bs y rinde muchísimo. Las gomitas venían bien cubiertas y el envío a domicilio por WhatsApp fue súper veloz.",
+        likes: 8,
+        verified: true,
+        recommend: true
+      },
+      {
+        id: 3,
+        name: "Lucía Morales",
+        date: "Hace 1 semana",
+        rating: 4,
+        title: "Muy rico pero picante",
+        comment: "Pedí el nivel de chile 'Picante!' y de verdad pica bastante jaja, pero la fruta riquísima. Para la próxima pediré Dulce + Picante.",
+        likes: 4,
+        verified: true,
+        recommend: true
+      }
+    ];
+
+    let selectedFormRating = 5;
+    let currentStarFilter = 'all';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderReviews();
+    });
+
+    function selectFruit(btn, fruitName, price) {
+      document.querySelectorAll('.fruit-opt').forEach(b => {
+        b.classList.remove('border-mango-500');
+        b.classList.add('border-transparent');
+        b.querySelector('.fa-check').classList.add('opacity-0');
+      });
+      btn.classList.remove('border-transparent');
+      btn.classList.add('border-mango-500');
+      btn.querySelector('.fa-check').classList.remove('opacity-0');
+      customBowl.fruit = fruitName;
+      customBowl.fruitPrice = price;
+      updateCustomSummary();
+    }
+
+    function selectSauce(btn, sauceName) {
+      document.querySelectorAll('.sauce-opt').forEach(b => {
+        b.classList.remove('border-mango-500');
+        b.classList.add('border-transparent');
+      });
+      btn.classList.remove('border-transparent');
+      btn.classList.add('border-mango-500');
+      customBowl.sauce = sauceName;
+      updateCustomSummary();
+    }
+
+    function toggleTopping(name, price, checkbox) {
+      if (checkbox.checked) {
+        customBowl.toppings.push({ name, price });
+      } else {
+        customBowl.toppings = customBowl.toppings.filter(t => t.name !== name);
+      }
+      updateCustomSummary();
+    }
+
+    function changeCustomQty(delta) {
+      customBowl.quantity = Math.max(1, customBowl.quantity + delta);
+      document.getElementById('custom-qty').innerText = customBowl.quantity;
+      updateCustomSummary();
+    }
+
+    function updateCustomSummary() {
+      let unitToppingsCost = customBowl.toppings.reduce((sum, t) => sum + t.price, 0);
+      let unitTotal = customBowl.fruitPrice + unitToppingsCost;
+      let grandTotal = unitTotal * customBowl.quantity;
+
+      let toppingText = customBowl.toppings.length > 0
+        ? ' + ' + customBowl.toppings.map(t => t.name).join(', ')
+        : '';
+
+      document.getElementById('custom-summary').innerText = `Vaso ${customBowl.fruit} (${customBowl.sauce})${toppingText}`;
+      document.getElementById('custom-price').innerText = `${grandTotal} Bs`;
+    }
+
+    function addCustomToCart() {
+      let unitToppingsCost = customBowl.toppings.reduce((sum, t) => sum + t.price, 0);
+      let unitTotal = customBowl.fruitPrice + unitToppingsCost;
+      let grandTotal = unitTotal * customBowl.quantity;
+
+      let toppingText = customBowl.toppings.length > 0
+        ? ' + ' + customBowl.toppings.map(t => t.name).join(', ')
+        : '';
+
+      let title = `${customBowl.quantity}x Vaso Personalizado (${customBowl.fruit}, ${customBowl.sauce}${toppingText})`;
+
+      addToCart(title, grandTotal);
+
+      customBowl.quantity = 1;
+      document.getElementById('custom-qty').innerText = 1;
+      updateCustomSummary();
+    }
+
+    function addToCart(title, price) {
+      cart.push({ title, price });
+      updateCartUI();
+      showToast(`¡${title} añadido al carrito!`);
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const countElem = document.getElementById('cart-count');
+      const itemsContainer = document.getElementById('cart-items');
+      const totalElem = document.getElementById('cart-total');
+
+      countElem.innerText = cart.length;
+
+      if (cart.length === 0) {
+        itemsContainer.innerHTML = '<p class="text-gray-400 text-xs text-center py-8">Tu carrito está vacío <br>¡Agrega tu fruta o vaso preferido!</p>';
+        totalElem.innerText = '0 Bs';
+        return;
+      }
+
+      let html = '';
+      let total = 0;
+      cart.forEach((item, index) => {
+        total += item.price;
+        html += `
+          <div class="flex justify-between items-center bg-amber-50/60 p-3 rounded-2xl border border-amber-100">
+            <div class="pr-2">
+              <p class="font-display font-bold text-xs text-chamoy-950">${item.title}</p>
+              <span class="text-xs font-black text-chamoy-700">${item.price} Bs</span>
+            </div>
+            <button onclick="removeFromCart(${index})" class="text-gray-400 hover:text-chamoy-600 p-1">
+              <i class="fas fa-trash text-xs"></i>
+            </button>
+          </div>
+        `;
+      });
+      itemsContainer.innerHTML = html;
+      totalElem.innerText = `${total} Bs`;
+    }
+
+    function toggleCartModal() {
+      const cartModal = document.getElementById('cart-modal');
+      cartModal.classList.toggle('hidden');
+      cartModal.classList.toggle('flex');
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    function filterMenu(category, btn) {
+      const items = document.querySelectorAll('.menu-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(b => {
+        b.classList.remove('bg-chamoy-900', 'text-white');
+        b.classList.add('bg-white', 'text-chamoy-950');
+      });
+
+      btn.classList.remove('bg-white', 'text-chamoy-950');
+      btn.classList.add('bg-chamoy-900', 'text-white');
+
+      items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function checkoutWhatsApp() {
+      if (cart.length === 0) {
+        showToast('Tu carrito está vacío');
+        return;
+      }
+
+      let phone = "59162198947";
+      let message = "¡Hola Picadely! Me gustaría realizar el siguiente pedido:\n\n";
+      let total = 0;
+
+      cart.forEach((item, i) => {
+        message += `${i + 1}. *${item.title}* - ${item.price} Bs\n`;
+        total += item.price;
+      });
+
+      message += `\n*Total Estimado:* ${total} Bs\n\n¿Me ayudan a confirmar el tiempo de envío?`;
+
+      const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toast-message');
+      toastMessage.innerText = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2500);
+    }
+
+    function renderReviews() {
+      const listContainer = document.getElementById('reviews-list');
+      listContainer.innerHTML = '';
+
+      let filtered = reviewsData.filter(r => {
+        if (currentStarFilter === 'all') return true;
+        return r.rating === parseInt(currentStarFilter, 10);
+      });
+
+      if (filtered.length === 0) {
+        listContainer.innerHTML = '<p class="text-center text-xs text-gray-400 py-6">No hay reseñas con esta calificación aún.</p>';
+        updateReviewSummaryStats();
+        return;
+      }
+
+      filtered.forEach(rev => {
+        let starsHtml = '';
+        for (let i = 1; i <= 5; i++) {
+          if (i <= rev.rating) {
+            starsHtml += '<i class="fas fa-star text-mango-500"></i>';
+          } else {
+            starsHtml += '<i class="far fa-star text-gray-300"></i>';
+          }
+        }
+
+        const itemCard = document.createElement('div');
+        itemCard.className = 'bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition';
+        itemCard.innerHTML = `
+          <div class="flex justify-between items-start mb-3">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 bg-chamoy-900 text-mango-400 font-display font-black rounded-full flex items-center justify-center text-sm shadow-sm">
+                ${rev.name.charAt(0)}
+              </div>
+              <div>
+                <div class="flex items-center space-x-2">
+                  <h4 class="font-display font-bold text-sm text-chamoy-950">${rev.name}</h4>
+                  ${rev.verified ? '<span class="bg-emerald-100 text-emerald-800 text-[9px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1"><i class="fas fa-check-circle"></i> Comprador</span>' : ''}
+                </div>
+                <p class="text-[10px] text-gray-400">${rev.date}</p>
+              </div>
+            </div>
+            <div class="flex text-xs space-x-1">${starsHtml}</div>
+          </div>
+          <h5 class="font-display font-bold text-sm text-gray-900 mb-1">${rev.title}</h5>
+          <p class="text-xs text-gray-600 leading-relaxed mb-4">${rev.comment}</p>
+          <div class="flex justify-between items-center pt-3 border-t border-gray-50 text-[11px]">
+            <span class="text-gray-400"><i class="fas fa-thumbs-up text-mango-500 mr-1"></i> ${rev.recommend ? 'Recomienda este local' : 'Opinión verificada'}</span>
+            <button onclick="likeReview(${rev.id}, this)" class="text-gray-500 hover:text-chamoy-600 font-semibold flex items-center gap-1 transition">
+              <i class="far fa-thumbs-up"></i>
+              <span>¿Útil? (${rev.likes})</span>
+            </button>
+          </div>
+        `;
+        listContainer.appendChild(itemCard);
+      });
+
+      updateReviewSummaryStats();
+    }
+
+    function updateReviewSummaryStats() {
+      if (reviewsData.length === 0) return;
+      const total = reviewsData.length;
+      const sum = reviewsData.reduce((acc, r) => acc + r.rating, 0);
+      const avg = (sum / total).toFixed(1);
+
+      document.getElementById('summary-avg-score').innerText = avg;
+      document.getElementById('summary-total-count').innerText = `Basado en ${total} valoraciones`;
+
+      for (let i = 1; i <= 5; i++) {
+        const count = reviewsData.filter(r => r.rating === i).length;
+        const pct = Math.round((count / total) * 100);
+        document.getElementById(`bar-${i}`).style.width = `${pct}%`;
+        document.getElementById(`count-${i}`).innerText = `${pct}%`;
+      }
+    }
+
+    function filterReviewsByStars(stars, btn) {
+      currentStarFilter = stars;
+      document.querySelectorAll('.rev-filter-btn').forEach(b => {
+        b.classList.remove('bg-chamoy-950', 'text-white');
+        b.classList.add('bg-amber-50', 'text-gray-700');
+      });
+      btn.classList.remove('bg-amber-50', 'text-gray-700');
+      btn.classList.add('bg-chamoy-950', 'text-white');
+      renderReviews();
+    }
+
+    function sortReviews(criteria) {
+      if (criteria === 'highest') {
+        reviewsData.sort((a, b) => b.rating - a.rating);
+      } else if (criteria === 'lowest') {
+        reviewsData.sort((a, b) => a.rating - b.rating);
+      } else {
+        reviewsData.sort((a, b) => b.id - a.id);
+      }
+      renderReviews();
+    }
+
+    function likeReview(id, btn) {
+      const rev = reviewsData.find(r => r.id === id);
+      if (rev) {
+        rev.likes += 1;
+        btn.innerHTML = `<i class="fas fa-thumbs-up text-chamoy-600"></i> <span class="text-chamoy-600 font-bold">¡Gracias! (${rev.likes})</span>`;
+        btn.disabled = true;
+      }
+    }
+
+    function toggleReviewModal() {
+      const modal = document.getElementById('review-modal');
+      modal.classList.toggle('hidden');
+      modal.classList.toggle('flex');
+    }
+
+    function setFormRating(stars) {
+      selectedFormRating = stars;
+      updateFormStarsUI(stars);
+    }
+
+    function hoverFormRating(stars) {
+      updateFormStarsUI(stars);
+    }
+
+    function resetFormRatingHover() {
+      updateFormStarsUI(selectedFormRating);
+    }
+
+    function updateFormStarsUI(stars) {
+      const container = document.getElementById('modal-star-rating');
+      const icons = container.querySelectorAll('i');
+      const labels = {
+        1: 'Pésimo (1/5)',
+        2: 'Malo (2/5)',
+        3: 'Aceptable (3/5)',
+        4: 'Bueno (4/5)',
+        5: '¡Excelente! (5/5)'
+      };
+
+      icons.forEach((icon, idx) => {
+        if (idx < stars) {
+          icon.className = 'fas fa-star text-mango-500 transition';
+        } else {
+          icon.className = 'far fa-star text-amber-300 transition';
+        }
+      });
+
+      document.getElementById('rating-feedback-text').innerText = labels[stars];
+    }
+
+    function submitReview(event) {
+      event.preventDefault();
+      const name = document.getElementById('rev-name').value;
+      const title = document.getElementById('rev-title').value;
+      const comment = document.getElementById('rev-comment').value;
+      const recommend = document.getElementById('rev-recommend').checked;
+
+      const newReview = {
+        id: Date.now(),
+        name: name,
+        date: 'Hace un momento',
+        rating: selectedFormRating,
+        title: title,
+        comment: comment,
+        likes: 0,
+        verified: true,
+        recommend: recommend
+      };
+
+      reviewsData.unshift(newReview);
+      renderReviews();
+      toggleReviewModal();
+      document.getElementById('review-form').reset();
+      setFormRating(5);
+      showToast('¡Reseña publicada con éxito!');
+    }
+  </script>
+</body>
+
+</html>
