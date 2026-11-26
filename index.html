@@ -170,3 +170,310 @@
           </div>
         </div>
       </div>
+      <div class="md:col-span-5 relative">
+        <div
+          class="relative z-10 bg-gradient-to-b from-chamoy-900 to-chamoy-950 p-4 rounded-3xl border-2 border-chamoy-700/50 shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500">
+          <img src="imageni.jpg" alt="Vaso de Mango con Chamoy"
+            class="rounded-2xl w-full h-80 sm:h-96 object-cover">
+          <div
+            class="absolute -bottom-6 -left-6 bg-mango-500 text-chamoy-950 p-4 rounded-2xl shadow-xl border-2 border-white flex items-center gap-3">
+            <span class="text-3xl">🔥</span>
+            <div>
+              <p class="font-display font-black text-sm uppercase">¡Favorito de la Casa!</p>
+              <p class="text-xs font-semibold opacity-90">Vaso de frutas con chamoy y tajín</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="py-16 bg-white relative">
+    <div class="max-w-7xl mx-auto px-6 sm:px-12">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <div
+          class="bg-amber-50/50 p-8 rounded-2xl border border-amber-200/60 hover:shadow-xl transition duration-300 text-center group">
+          <div
+            class="w-16 h-16 bg-mango-500 text-chamoy-950 rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl group-hover:scale-110 transition duration-300 shadow-md">
+            <i class="fas fa-apple-whole"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-chamoy-950 mb-2">100% Fruta Fresca</h3>
+          <p class="text-gray-600 text-xs leading-relaxed">Seleccionamos las frutas más jugosas del día para garantizar
+            un sabor increíble en cada bocado.</p>
+        </div>
+
+        <div
+          class="bg-amber-50/50 p-8 rounded-2xl border border-amber-200/60 hover:shadow-xl transition duration-300 text-center group">
+          <div
+            class="w-16 h-16 bg-chamoy-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl group-hover:scale-110 transition duration-300 shadow-md">
+            <i class="fas fa-pepper-hot"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-chamoy-950 mb-2">Chamoy y Tajín Artesanal</h3>
+          <p class="text-gray-600 text-xs leading-relaxed">Nuestra receta secreta agridulce balanceada perfectamente
+            entre lo dulce, acidito y picante.</p>
+        </div>
+
+        <div
+          class="bg-amber-50/50 p-8 rounded-2xl border border-amber-200/60 hover:shadow-xl transition duration-300 text-center group">
+          <div
+            class="w-16 h-16 bg-tajin-500 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl group-hover:scale-110 transition duration-300 shadow-md">
+            <i class="fas fa-candy-cane"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-chamoy-950 mb-2">Topping de Gomitas</h3>
+          <p class="text-gray-600 text-xs leading-relaxed">Ositos de goma, aros de gomita y gusanos de goma.</p>
+        </div>
+
+        <div
+          class="bg-amber-50/50 p-8 rounded-2xl border border-amber-200/60 hover:shadow-xl transition duration-300 text-center group">
+          <div
+            class="w-16 h-16 bg-emerald-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl group-hover:scale-110 transition duration-300 shadow-md">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-chamoy-950 mb-2">Envíos Rápidos</h3>
+          <p class="text-gray-600 text-xs leading-relaxed">Preparamos tu antojo al momento para que llegue fresco y en
+            su punto hasta tu puerta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" class="py-24 bg-amber-50/50">
+    <div class="max-w-7xl mx-auto px-6 sm:px-12">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-chamoy-600 font-display font-extrabold uppercase text-xs tracking-widest">NUESTRO MENÚ</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-black text-chamoy-950 mt-1">Los Antojos Más Buscados</h2>
+        <div class="w-20 h-1.5 bg-gradient-to-r from-mango-500 to-chamoy-600 mx-auto mt-3 rounded-full"></div>
+      </div>
+
+      <div class="flex justify-center flex-wrap gap-3 mb-12" id="menu-filters">
+        <button onclick="filterMenu('all', this)"
+          class="filter-btn active bg-chamoy-900 text-white text-xs font-display font-bold uppercase tracking-wider px-6 py-3 rounded-xl transition shadow-md">
+          Todos
+        </button>
+        <button onclick="filterMenu('vasos', this)"
+          class="filter-btn bg-white hover:bg-chamoy-100 text-chamoy-950 text-xs font-display font-bold uppercase tracking-wider px-6 py-3 rounded-xl transition shadow-sm border border-amber-200">
+          Vaso Común
+        </button>
+        <button onclick="filterMenu('locuras', this)"
+          class="filter-btn bg-white hover:bg-chamoy-100 text-chamoy-950 text-xs font-display font-bold uppercase tracking-wider px-6 py-3 rounded-xl transition shadow-sm border border-amber-200">
+          Vaso Especial
+        </button>
+        <button onclick="filterMenu('botanas', this)"
+          class="filter-btn bg-white hover:bg-chamoy-100 text-chamoy-950 text-xs font-display font-bold uppercase tracking-wider px-6 py-3 rounded-xl transition shadow-sm border border-amber-200">
+          Vaso Mixto
+        </button>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="menu-grid">
+
+        <div
+          class="menu-item vasos bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 border border-amber-100 flex flex-col justify-between group">
+          <div class="relative overflow-hidden h-80 bg-amber-100">
+            <img src="imagen1.jpg" alt="Vaso Común"
+              class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            <span
+              class="absolute top-4 left-4 bg-mango-500 text-chamoy-950 text-[10px] font-display font-black uppercase tracking-wider px-3 py-1 rounded-full shadow">
+              Más Vendido
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-display font-bold text-xl text-chamoy-950">Vaso Común</h3>
+                <span class="font-display font-black text-chamoy-700 text-xl">10 Bs</span>
+              </div>
+              <p class="text-gray-500 text-xs leading-relaxed mb-6">
+                Vaso con elección a dos frutas (Mango, Sandía, Piña) y Chamoy con Tajín.
+              </p>
+            </div>
+            <button onclick="addToCart('Vaso Común', 10)"
+              class="w-full bg-chamoy-950 hover:bg-chamoy-800 text-white font-display font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl transition flex items-center justify-center gap-2">
+              <i class="fas fa-plus"></i>
+              <span>Añadir al Carrito</span>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="menu-item locuras bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 border border-amber-100 flex flex-col justify-between group">
+          <div class="relative overflow-hidden h-80 bg-amber-100">
+            <img src="imagen9.jpg" alt="Vaso Especial"
+              class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            <span
+              class="absolute top-4 left-4 bg-chamoy-600 text-white text-[10px] font-display font-black uppercase tracking-wider px-3 py-1 rounded-full shadow">
+              Super Gomitas
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-display font-bold text-xl text-chamoy-950">Vaso Especial</h3>
+                <span class="font-display font-black text-chamoy-700 text-xl">15 Bs</span>
+              </div>
+              <p class="text-gray-500 text-xs leading-relaxed mb-6">
+                Vaso lleno de gomitas, Chamoy y Tajín.
+              </p>
+            </div>
+            <button onclick="addToCart('Vaso Especial', 15)"
+              class="w-full bg-chamoy-950 hover:bg-chamoy-800 text-white font-display font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl transition flex items-center justify-center gap-2">
+              <i class="fas fa-plus"></i>
+              <span>Añadir al Carrito</span>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="menu-item botanas bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 border border-amber-100 flex flex-col justify-between group">
+          <div class="relative overflow-hidden h-80 bg-amber-100">
+            <img src="imagen2.jpg" alt="Combo Mixto"
+              class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            <span
+              class="absolute top-4 left-4 bg-emerald-600 text-white text-[10px] font-display font-black uppercase tracking-wider px-3 py-1 rounded-full shadow">
+              Mega Combo
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-display font-bold text-xl text-chamoy-950">Combo Mixto</h3>
+                <span class="font-display font-black text-chamoy-700 text-xl">20 Bs</span>
+              </div>
+              <p class="text-gray-500 text-xs leading-relaxed mb-6">
+                Mega vaso con opción a 3 frutas (Mango + Sandía + Piña) + Gomitas + Chamoy y Tajín.
+              </p>
+            </div>
+            <button onclick="addToCart('Combo Mixto', 20)"
+              class="w-full bg-chamoy-950 hover:bg-chamoy-800 text-white font-display font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl transition flex items-center justify-center gap-2">
+              <i class="fas fa-plus"></i>
+              <span>Añadir al Carrito</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="builder" class="py-24 bg-gradient-to-b from-chamoy-950 to-chamoy-900 text-white relative">
+    <div class="max-w-5xl mx-auto px-6 sm:px-12">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-mango-400 font-display font-extrabold uppercase text-xs tracking-widest">PERSONALIZADOR DE
+          ANTOJOS</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-black text-white mt-1">Crea Tu Vaso Ideal</h2>
+        <p class="text-gray-300 text-sm mt-2">Elige tus frutas, nivel de picante y toppings favoritos a tu gusto exacto.
+        </p>
+      </div>
+
+      <div class="bg-chamoy-900/80 border-2 border-chamoy-700 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-md">
+
+        <div class="mb-8">
+          <label class="block font-display font-extrabold text-sm uppercase text-mango-400 tracking-wider mb-3">
+            Paso 1: Elige tu Base
+          </label>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <button type="button" onclick="selectFruit(this, 'Mango con Piña', 10)"
+              class="fruit-opt bg-chamoy-950 hover:bg-chamoy-800 border-2 border-mango-500 text-white font-semibold py-3 px-4 rounded-xl text-xs flex items-center justify-between transition">
+              <span>Mango con Piña (10 Bs)</span>
+              <i class="fas fa-check text-mango-400"></i>
+            </button>
+            <button type="button" onclick="selectFruit(this, 'Sandía con Piña', 10)"
+              class="fruit-opt bg-chamoy-950 hover:bg-chamoy-800 border-2 border-transparent text-white font-semibold py-3 px-4 rounded-xl text-xs flex items-center justify-between transition">
+              <span>Sandía con Piña (10 Bs)</span>
+              <i class="fas fa-check text-mango-400 opacity-0"></i>
+            </button>
+            <button type="button" onclick="selectFruit(this, 'Mango con Sandía', 10)"
+              class="fruit-opt bg-chamoy-950 hover:bg-chamoy-800 border-2 border-transparent text-white font-semibold py-3 px-4 rounded-xl text-xs flex items-center justify-between transition">
+              <span>Mango con Sandía (10 Bs)</span>
+              <i class="fas fa-check text-mango-400 opacity-0"></i>
+            </button>
+            <button type="button" onclick="selectFruit(this, 'Vaso de Gomitas', 15)"
+              class="fruit-opt bg-chamoy-950 hover:bg-chamoy-800 border-2 border-transparent text-white font-semibold py-3 px-4 rounded-xl text-xs flex items-center justify-between transition">
+              <span>Vaso de Gomitas (15 Bs)</span>
+              <i class="fas fa-check text-mango-400 opacity-0"></i>
+            </button>
+            <button type="button" onclick="selectFruit(this, 'Mix Especial', 20)"
+              class="fruit-opt bg-chamoy-950 hover:bg-chamoy-800 border-2 border-transparent text-white font-semibold py-3 px-4 rounded-xl text-xs flex items-center justify-between transition">
+              <span>Mix Especial (20 Bs)</span>
+              <i class="fas fa-check text-mango-400 opacity-0"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-8">
+          <label class="block font-display font-extrabold text-sm uppercase text-mango-400 tracking-wider mb-3">
+            Paso 2: Nivel de Chamoy & Chile
+          </label>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <button type="button" onclick="selectSauce(this, 'Chamoy Dulce')"
+              class="sauce-opt bg-chamoy-950 hover:bg-chamoy-800 border-2 border-mango-500 text-white font-semibold py-3 px-3 rounded-xl text-xs text-center transition">
+              Chamoy Dulce
+            </button>
+            <button type="button" onclick="selectSauce(this, 'Dulce + Picante')"
+              class="sauce-opt bg-chamoy-950 hover:bg-chamoy-800 border-2 border-transparent text-white font-semibold py-3 px-3 rounded-xl text-xs text-center transition">
+              Dulce + Picante
+            </button>
+            <button type="button" onclick="selectSauce(this, 'Picante!')"
+              class="sauce-opt bg-chamoy-950 hover:bg-chamoy-800 border-2 border-transparent text-white font-semibold py-3 px-3 rounded-xl text-xs text-center transition">
+              Picante!
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-8">
+          <label class="block font-display font-extrabold text-sm uppercase text-mango-400 tracking-wider mb-3">
+            Paso 3: Elige tus Toppings (+5 Bs c/u)
+          </label>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <label
+              class="flex items-center space-x-3 bg-chamoy-950 p-3 rounded-xl border border-chamoy-800 cursor-pointer hover:border-mango-500 transition">
+              <input type="checkbox" onchange="toggleTopping('Ositos de Goma', 5, this)"
+                class="w-4 h-4 accent-mango-500 rounded">
+              <span class="text-xs font-medium">Ositos de Goma</span>
+            </label>
+            <label
+              class="flex items-center space-x-3 bg-chamoy-950 p-3 rounded-xl border border-chamoy-800 cursor-pointer hover:border-mango-500 transition">
+              <input type="checkbox" onchange="toggleTopping('Aros de Gomita', 5, this)"
+                class="w-4 h-4 accent-mango-500 rounded">
+              <span class="text-xs font-medium">Aros de Gomita</span>
+            </label>
+            <label
+              class="flex items-center space-x-3 bg-chamoy-950 p-3 rounded-xl border border-chamoy-800 cursor-pointer hover:border-mango-500 transition">
+              <input type="checkbox" onchange="toggleTopping('Gusanitos de Goma', 5, this)"
+                class="w-4 h-4 accent-mango-500 rounded">
+              <span class="text-xs font-medium">Gusanitos de Goma</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-chamoy-800 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div class="w-full md:w-auto">
+            <span class="text-xs uppercase text-gray-400 font-semibold">Resumen de tu Creación:</span>
+            <p id="custom-summary" class="text-sm font-display font-bold text-mango-300">Vaso Mango con Piña (Chamoy
+              Dulce)</p>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between md:justify-end gap-4 w-full md:w-auto">
+            <div class="flex items-center bg-chamoy-950 border border-chamoy-700 rounded-xl p-1">
+              <button type="button" onclick="changeCustomQty(-1)"
+                class="w-9 h-9 rounded-lg bg-chamoy-900 hover:bg-chamoy-800 text-mango-400 font-bold flex items-center justify-center transition">
+                <i class="fas fa-minus text-xs"></i>
+              </button>
+              <span id="custom-qty" class="w-10 text-center font-display font-black text-sm text-white">1</span>
+              <button type="button" onclick="changeCustomQty(1)"
+                class="w-9 h-9 rounded-lg bg-chamoy-900 hover:bg-chamoy-800 text-mango-400 font-bold flex items-center justify-center transition">
+                <i class="fas fa-plus text-xs"></i>
+              </button>
+            </div>
+
+            <span id="custom-price" class="font-display font-black text-3xl text-white">10 Bs</span>
+
+            <button onclick="addCustomToCart()"
+              class="bg-gradient-to-r from-mango-400 to-tajin-500 hover:from-mango-500 hover:to-tajin-600 text-chamoy-950 font-display font-black uppercase text-xs tracking-wider px-6 py-4 rounded-xl shadow-xl transition transform hover:scale-105">
+              ¡Añadir Mi Creación!
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
