@@ -476,4 +476,198 @@
       </div>
     </div>
   </section>
+<section id="reviews" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 sm:px-12">
 
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-chamoy-600 font-display font-extrabold uppercase text-xs tracking-widest">OPINIONES DE
+          NUESTROS CLIENTES</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-black text-chamoy-950 mt-1">Experiencias y Calificaciones</h2>
+        <div class="w-20 h-1.5 bg-mango-500 mx-auto mt-3 rounded-full"></div>
+      </div>
+
+      <div class="bg-amber-50/50 rounded-3xl border border-amber-200/70 p-6 sm:p-10 mb-12 shadow-sm">
+        <div class="grid md:grid-cols-12 gap-8 items-center">
+
+          <div
+            class="md:col-span-4 text-center border-b md:border-b-0 md:border-r border-amber-200/80 pb-6 md:pb-0 md:pr-6">
+            <div class="font-display font-black text-6xl sm:text-7xl text-chamoy-950" id="summary-avg-score">4.7</div>
+            <div class="flex justify-center text-mango-500 text-xl my-2 space-x-1" id="summary-avg-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            </div>
+            <p class="text-xs font-semibold text-gray-500" id="summary-total-count">Basado en 3 valoraciones</p>
+
+            <button onclick="toggleReviewModal()"
+              class="mt-5 w-full sm:w-auto bg-gradient-to-r from-chamoy-600 to-chamoy-700 hover:from-chamoy-500 hover:to-chamoy-600 text-white font-display font-black text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg transition duration-300 transform hover:-translate-y-0.5">
+              <i class="fas fa-pen mr-2"></i>Escribir una Reseña
+            </button>
+          </div>
+
+          <div class="md:col-span-8 space-y-2.5">
+            <div class="flex items-center text-xs space-x-3">
+              <span class="w-12 font-bold text-gray-700 flex items-center">5 <i
+                  class="fas fa-star text-mango-500 ml-1 text-[10px]"></i></span>
+              <div class="flex-1 bg-amber-200/60 h-3 rounded-full overflow-hidden">
+                <div class="bg-mango-500 h-full rounded-full transition-all duration-500" style="width: 67%" id="bar-5">
+                </div>
+              </div>
+              <span class="w-10 text-right text-gray-500 font-semibold" id="count-5">67%</span>
+            </div>
+
+            <div class="flex items-center text-xs space-x-3">
+              <span class="w-12 font-bold text-gray-700 flex items-center">4 <i
+                  class="fas fa-star text-mango-500 ml-1 text-[10px]"></i></span>
+              <div class="flex-1 bg-amber-200/60 h-3 rounded-full overflow-hidden">
+                <div class="bg-mango-500 h-full rounded-full transition-all duration-500" style="width: 33%" id="bar-4">
+                </div>
+              </div>
+              <span class="w-10 text-right text-gray-500 font-semibold" id="count-4">33%</span>
+            </div>
+
+            <div class="flex items-center text-xs space-x-3">
+              <span class="w-12 font-bold text-gray-700 flex items-center">3 <i
+                  class="fas fa-star text-mango-500 ml-1 text-[10px]"></i></span>
+              <div class="flex-1 bg-amber-200/60 h-3 rounded-full overflow-hidden">
+                <div class="bg-mango-500 h-full rounded-full transition-all duration-500" style="width: 0%" id="bar-3">
+                </div>
+              </div>
+              <span class="w-10 text-right text-gray-500 font-semibold" id="count-3">0%</span>
+            </div>
+
+            <div class="flex items-center text-xs space-x-3">
+              <span class="w-12 font-bold text-gray-700 flex items-center">2 <i
+                  class="fas fa-star text-mango-500 ml-1 text-[10px]"></i></span>
+              <div class="flex-1 bg-amber-200/60 h-3 rounded-full overflow-hidden">
+                <div class="bg-mango-500 h-full rounded-full transition-all duration-500" style="width: 0%" id="bar-2">
+                </div>
+              </div>
+              <span class="w-10 text-right text-gray-500 font-semibold" id="count-2">0%</span>
+            </div>
+
+            <div class="flex items-center text-xs space-x-3">
+              <span class="w-12 font-bold text-gray-700 flex items-center">1 <i
+                  class="fas fa-star text-mango-500 ml-1 text-[10px]"></i></span>
+              <div class="flex-1 bg-amber-200/60 h-3 rounded-full overflow-hidden">
+                <div class="bg-mango-500 h-full rounded-full transition-all duration-500" style="width: 0%" id="bar-1">
+                </div>
+              </div>
+              <span class="w-10 text-right text-gray-500 font-semibold" id="count-1">0%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
+        <div class="flex flex-wrap gap-2 text-xs font-semibold" id="review-stars-filter">
+          <button onclick="filterReviewsByStars('all', this)"
+            class="rev-filter-btn active bg-chamoy-950 text-white px-4 py-2 rounded-xl border border-chamoy-900 transition">
+            Todas
+          </button>
+          <button onclick="filterReviewsByStars(5, this)"
+            class="rev-filter-btn bg-amber-50 hover:bg-amber-100 text-gray-700 px-4 py-2 rounded-xl border border-amber-200 transition flex items-center gap-1">
+            5 <i class="fas fa-star text-mango-500"></i>
+          </button>
+          <button onclick="filterReviewsByStars(4, this)"
+            class="rev-filter-btn bg-amber-50 hover:bg-amber-100 text-gray-700 px-4 py-2 rounded-xl border border-amber-200 transition flex items-center gap-1">
+            4 <i class="fas fa-star text-mango-500"></i>
+          </button>
+          <button onclick="filterReviewsByStars(3, this)"
+            class="rev-filter-btn bg-amber-50 hover:bg-amber-100 text-gray-700 px-4 py-2 rounded-xl border border-amber-200 transition flex items-center gap-1">
+            3 <i class="fas fa-star text-mango-500"></i>
+          </button>
+        </div>
+
+        <div class="flex items-center space-x-2 text-xs w-full sm:w-auto">
+          <label for="review-sort-select" class="text-gray-500 font-medium whitespace-nowrap">Ordenar por:</label>
+          <select id="review-sort-select" onchange="sortReviews(this.value)"
+            class="bg-amber-50/80 border border-amber-200 rounded-xl px-3 py-2 text-chamoy-950 font-bold focus:outline-none focus:ring-2 focus:ring-mango-500 w-full sm:w-auto">
+            <option value="recent">Más Recientes</option>
+            <option value="highest">Mayor Calificación</option>
+            <option value="lowest">Menor Calificación</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="reviews-list" class="space-y-6"></div>
+    </div>
+  </section>
+  <div id="review-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm justify-center items-center p-4">
+    <div
+      class="bg-white w-full max-w-lg rounded-3xl shadow-2xl p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
+      <button onclick="toggleReviewModal()"
+        class="absolute top-6 right-6 text-gray-400 hover:text-chamoy-800 text-xl transition">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="mb-6">
+        <span class="text-mango-600 font-display font-extrabold uppercase text-[11px] tracking-widest">TU OPINIÓN
+          CUENTA</span>
+        <h3 class="font-display font-black text-2xl text-chamoy-950">Déjanos tu Reseña</h3>
+        <p class="text-gray-500 text-xs mt-1">Cuéntanos sobre el sabor, frescura y tu antojo favorito.</p>
+      </div>
+
+      <form id="review-form" onsubmit="submitReview(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-bold text-gray-700 mb-1.5">Tu Calificación General *</label>
+          <div class="flex items-center space-x-2 bg-amber-50 p-3 rounded-2xl border border-amber-200">
+            <div class="flex text-2xl text-mango-500 space-x-1 cursor-pointer" id="modal-star-rating">
+              <i class="fas fa-star transition" onclick="setFormRating(1)" onmouseover="hoverFormRating(1)"
+                onmouseleave="resetFormRatingHover()"></i>
+              <i class="fas fa-star transition" onclick="setFormRating(2)" onmouseover="hoverFormRating(2)"
+                onmouseleave="resetFormRatingHover()"></i>
+              <i class="fas fa-star transition" onclick="setFormRating(3)" onmouseover="hoverFormRating(3)"
+                onmouseleave="resetFormRatingHover()"></i>
+              <i class="fas fa-star transition" onclick="setFormRating(4)" onmouseover="hoverFormRating(4)"
+                onmouseleave="resetFormRatingHover()"></i>
+              <i class="fas fa-star transition" onclick="setFormRating(5)" onmouseover="hoverFormRating(5)"
+                onmouseleave="resetFormRatingHover()"></i>
+            </div>
+            <span id="rating-feedback-text" class="text-xs font-display font-bold text-chamoy-700 ml-3">¡Excelente!
+              (5/5)</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-bold text-gray-700 mb-1">Tu Nombre *</label>
+            <input type="text" id="rev-name" required placeholder="Ej. Mariana López"
+              class="w-full bg-amber-50/60 border border-amber-200 rounded-xl px-3.5 py-2.5 text-gray-800 focus:outline-none focus:ring-2 focus:ring-mango-500">
+          </div>
+          <div>
+            <label class="block font-bold text-gray-700 mb-1">Correo Electrónico *</label>
+            <input type="email" id="rev-email" required placeholder="mariana@ejemplo.com"
+              class="w-full bg-amber-50/60 border border-amber-200 rounded-xl px-3.5 py-2.5 text-gray-800 focus:outline-none focus:ring-2 focus:ring-mango-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-gray-700 mb-1">Título de tu Reseña *</label>
+          <input type="text" id="rev-title" required placeholder="Ej. ¡El mejor chamoy de Cochabamba!"
+            class="w-full bg-amber-50/60 border border-amber-200 rounded-xl px-3.5 py-2.5 text-gray-800 focus:outline-none focus:ring-2 focus:ring-mango-500">
+        </div>
+
+        <div>
+          <label class="block font-bold text-gray-700 mb-1">Comentario Detallado *</label>
+          <textarea id="rev-comment" required rows="4"
+            placeholder="Cuéntanos qué pediste, cómo llegó la fruta y qué tal el chamoy..."
+            class="w-full bg-amber-50/60 border border-amber-200 rounded-xl px-3.5 py-2.5 text-gray-800 focus:outline-none focus:ring-2 focus:ring-mango-500"></textarea>
+        </div>
+
+        <div class="flex items-center space-x-2.5 pt-1">
+          <input type="checkbox" id="rev-recommend" checked class="w-4 h-4 accent-chamoy-600 rounded cursor-pointer">
+          <label for="rev-recommend" class="text-gray-700 font-medium cursor-pointer">Recomiendo este emprendimiento a
+            otros amantes del chamoy</label>
+        </div>
+
+        <div class="pt-4">
+          <button type="submit"
+            class="w-full bg-gradient-to-r from-chamoy-700 to-chamoy-800 hover:from-chamoy-600 hover:to-chamoy-700 text-white font-display font-black text-xs uppercase tracking-wider py-4 rounded-xl shadow-lg transition duration-300">
+            Publicar Reseña
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
